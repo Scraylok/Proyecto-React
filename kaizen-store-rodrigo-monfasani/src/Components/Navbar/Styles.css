@@ -1,0 +1,35 @@
+.nav-item:hover{
+    opacity: 1;
+    background-color: rgba(0, 255, 255, 0.189);
+    
+}
+.nav-item::before {
+    content: "";
+    position: absolute;
+    left: 0%;
+    bottom: 0%;
+    width: 0%;
+    height: 2px;
+    background-color: #000000;
+    transition: all 0.4s;
+
+}
+.nav-item:hover::before{
+    width: 100%;
+}
+.nav-logo {
+    display: flex;
+    width: 100px;
+    height: 75px;
+}
+.nav {
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(79, 78, 78);
+    min-height: 3.75rem;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    padding: 10px;
+}
