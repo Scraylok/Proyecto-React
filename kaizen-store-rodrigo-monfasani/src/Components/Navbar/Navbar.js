@@ -22,17 +22,19 @@ const itemsNav =  [
 ]
 
 const Navbar = () => {
-    return { 
-        <div>
-        <img className="nav-logo" src="../../Assests/Kaizen.png" alt="">
+    return (
+        <div className="nav">
+            <h1 className="nav-logo">Kaizen games</h1>
+        
 
             <div>
             {itemsNav.map((item)=> (
-                <a href="/" className="nav-item" key={item.id} >{item.label}</a>
+                <a href="/" className="nav-item container__animacion" key={item.id} >{item.label}</a>
 
             ))}
             </div>
         </div>
 
-}}
+    )
+}
 export default Navbar
