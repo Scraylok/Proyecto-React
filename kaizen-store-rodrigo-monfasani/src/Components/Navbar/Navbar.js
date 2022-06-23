@@ -24,12 +24,14 @@ const itemsNav =  [
 const Navbar = () => {
     return (
         <div className="nav">
-            <h1 className="nav-logo">Kaizen games</h1>
+            <img className="nav-logo" src="../../Assests/Kaizen.png" alt="Kaizen logo" />
+           
+          
         
 
             <div>
             {itemsNav.map((item)=> (
-                <a href="/" className="nav-item container__animacion" key={item.id} >{item.label}</a>
+                <a href="/" className="nav-item " key={item.id} >{item.label}</a>
 
             ))}
             </div>
