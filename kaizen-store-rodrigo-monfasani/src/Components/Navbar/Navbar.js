@@ -1,5 +1,7 @@
 import React from "react";
-import "./Styles.css"
+import "./Styles.css";
+import kaizenLogo from "../../Assests/Kaizen.png"
+import CartWidget from "../Cart/Cart";
 
 const itemsNav =  [
 
@@ -24,17 +26,18 @@ const itemsNav =  [
 const Navbar = () => {
     return (
         <div className="nav">
-            <img className="nav-logo" src="../../Assests/Kaizen.png" alt="Kaizen logo" />
+            <img className="nav-logo" src={kaizenLogo} alt="Kaizen logo" />
            
           
         
 
-            <div>
+            <div className="nav-items">
             {itemsNav.map((item)=> (
                 <a href="/" className="nav-item " key={item.id} >{item.label}</a>
 
             ))}
             </div>
+            <CartWidget/>
         </div>
 
     )

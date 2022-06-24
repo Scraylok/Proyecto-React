@@ -1,12 +1,14 @@
 import React from "react";
 import shopping_cart from "../../Assests/shopping-cart.png";
+import "./StylesCart.css";
 
 
-const Cart = () => {
-    return {
-    
-        <button><img src={shopping_cart} alt="Cart Icon"></button>
-    }
-    
+const CartWidget = () => {
+    return (
+        <button className="cart-btn"><img src={shopping_cart} alt="Cart Icon" className="cart-widget"/></button>
+
+    )
 }
-export default Cart
+
+
+export default CartWidget
