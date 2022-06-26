@@ -5,9 +5,9 @@ import KaizenLogo from "../../Assests/Kaizen.png"
 const  ItemListContainer = ({Greeting, Logo}) => {
     return (
     <div className="landing">
-        <span>{Greeting}</span>
-        <img src={KaizenLogo} alt="Logo" className="Logo-landing" />
-    
+        <h1 className="Tittle-landing Tittle-landing-animation">{Greeting}</h1>
+        
+        <img src={KaizenLogo} alt="Logo" className="Logo-landing heartbeat" />
     </div>
     )
 }
