@@ -2,6 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import imgCard from "../../Assests/Store/sovereign-skins.jpg"
 
+
+
 export const Card = ({stock,name,initial}) => {
 
    
@@ -28,6 +30,9 @@ export const Card = ({stock,name,initial}) => {
                  <button className="btn btn-danger p-5 fw-bold display-3" disabled={amount <=0} onClick={()=>count(-1)}>-</button>
                  <span className='d-flex flex-row'>{amount} | {stock}</span>
                  <button className="btn btn-success p-5 fw-bold display-3" onClick={()=>count(+1)}>+</button>
+                <div>
+                    <button>Agregar al carrito</button>
+                </div>
 
                </div>
         </section>
