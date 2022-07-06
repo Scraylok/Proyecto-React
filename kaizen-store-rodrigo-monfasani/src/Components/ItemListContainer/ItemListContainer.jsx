@@ -1,35 +1,27 @@
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './StylesItemList.css'
 import { useState, useEffect } from "react";
-import itemList from "../itemList/itemList";
+import ItemList from '../itemList/ItemList';
 import { ItemCount } from "../itemCount/ItemCount";
-
-const products = [
-    {id:'01', name:'random1', description: "Lorem ipsum dolor sit amet",   stock:5},
-    {id:'02', name:'random2', description: "Lorem ipsum dolor sit amet",   stock:7},
-    {id:'03', name:'random3', description: "Lorem ipsum dolor sit amet",   stock:2},
-    {id:'04', name:'random4', description: "Lorem ipsum dolor sit amet",   stock:8},
-    {id:'05', name:'random5', description: "Lorem ipsum dolor sit amet",   stock:3},
-    {id:'06', name:'random6', description: "Lorem ipsum dolor sit amet",   stock:10},
-
-]
+import { getData } from "../../Mocks/fakeApi";
 
 
-export const ItemListContainer = ({}) => {
+
+
+ const ItemListContainer = ({}) => {
+    
+
+  
     const [productsList, setProductsList] =useState([])
+    const [loading, setLoading]=useState(true)
 
-    const getData = new Promise ((resolve, reject) => {
-        let condition = true 
-        setTimeout(() => {
-            if(condition){
-                resolve(products)
-            }else{
-                reject(console.log('algo salio mal'))
-            }
-        },3000)
-    })
+
     useEffect(() => {
         getData
-        .then((result) => setProductsList(result)) 
+        .then((result) => setProductsList(result))
+        .catch((error)=>console.log(error))
+        .finally(()=>setLoading(false)) 
     },[])
     
     const onAdd = (quantity) => {
@@ -38,7 +30,11 @@ export const ItemListContainer = ({}) => {
     return (
         <>
         <ItemCount initial={1} stock={4} onAdd={onAdd}/>
-        <itemList productsList={productsList}/>
+        {loading ? <p>Cargando...</p> : <ItemList productsList={productsList}/>}
+        
+        
         </>
     )
 }
+
+export default ItemListContainer    

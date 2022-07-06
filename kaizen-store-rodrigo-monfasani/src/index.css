@@ -12,7 +12,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-image: url(./Assests/Fondo-jp.png);
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: auto;
 
  
   
