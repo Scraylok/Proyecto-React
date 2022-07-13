@@ -1,7 +1,7 @@
 import React from "react";
 import "./Styles.css";
 import kaizenLogo from "../../Assests/Kaizen.png"
-import CartWidget from "../Cart/Cart";
+import CartWidget from "../CartWidget/CartWidget";
 import { NavLink } from "react-router-dom";
 
 const itemsNav =  [
@@ -39,7 +39,7 @@ const Navbar = () => {
 
             <div className="nav-items">
             {itemsNav.map((item)=> (
-                <NavLink to={itemsNav.id} className="nav-item " key={item.id} >{item.label}</NavLink>
+                <NavLink  className="nav-item" to={itemsNav} key={item.id} >{item.label}</NavLink>
 
             ))}
             </div>

@@ -1,7 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './Components/Navbar/Navbar';
-import cart from './Components/Cart/Cart.js'
+import Cart from './Components/Cart/Cart';
 import Landing from './Components/Landing/Landing';
 import ItemListContainer from './Components/ItemListContainer/ItemListContainer';
 import ItemDetailcontainer from './Components/ItemDetailContainer/ItemDetailcontainer';
@@ -9,20 +9,17 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 function App() {
   return (
-   <>
+  
    <BrowserRouter>
-      <Navbar/>
-      
+        <Navbar/>
       <Routes>
-        <Route path='/' element={<div className="App"><Landing Greeting="Bienvenido a" /></div>}/>
-        <Route path='/' element={<ItemListContainer/>} />
-        <Route path='/' element={<ItemListContainer/>} />
-        <Route path='/cart' element={ <cart/> } />
-        <Route path='/category/' element={<ItemDetailcontainer/>} />
-      </Routes>
-   </BrowserRouter>
 
-   </>
+        <Route path='/' element={<ItemListContainer />}/>
+        <Route path='/Category/categoryId' element={<ItemListContainer/>}/>
+        <Route path='/Cart' element={<Cart/>}/>
+        <Route path='/Detail/:id' element={<ItemDetailcontainer/>}/>
+      </Routes>
+    </BrowserRouter>
     
   );
 }
