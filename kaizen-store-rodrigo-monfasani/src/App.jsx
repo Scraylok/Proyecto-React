@@ -6,19 +6,28 @@ import Landing from './Components/Landing/Landing';
 import ItemListContainer from './Components/ItemListContainer/ItemListContainer';
 import ItemDetailcontainer from './Components/ItemDetailContainer/ItemDetailcontainer';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import React from 'react';
+import CartProvider from './Context/CartContext';
+
+const Cartcontext = React.createContext('')
 
 function App() {
   return (
   
    <BrowserRouter>
+      <CartProvider>
         <Navbar/>
-      <Routes>
-
-        <Route path='/' element={<ItemListContainer />}/>
-        <Route path='/Category/categoryId' element={<ItemListContainer/>}/>
-        <Route path='/Cart' element={<Cart/>}/>
-        <Route path='/Detail/:id' element={<ItemDetailcontainer/>}/>
-      </Routes>
+        <Routes>
+          <Route path='/' element={
+            <div>
+            <div className="App"><Landing Greeting="Bienvenido a" /></div><ItemListContainer />  
+            </div>
+            }/>
+          <Route path='/Category/:categoryId' element={<ItemListContainer/>}/>
+          <Route path='/Cart' element={ <Cart/> }/>
+          <Route path='/Detail/:id' element={<ItemDetailcontainer/>}/>
+        </Routes>
+      </CartProvider>
     </BrowserRouter>
     
   );

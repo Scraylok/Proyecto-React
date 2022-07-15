@@ -1,10 +1,11 @@
-import React  from 'react';
+import React ,{useState, useContext} from 'react';
 import './StyleItem.css'
-import { useState } from 'react';
-import imgCard from "../../Assests/Store/sovereign-skins.jpg"
+import {Cartcontext} from "../../Context/CartContext"
+
 
 
 const Item = ({products,stock}) =>  {
+    const nombre = useContext(Cartcontext)
 
     const {img, name, description} = products
  
@@ -32,7 +33,7 @@ const Item = ({products,stock}) =>  {
                     <button className="StyleCard-btn_positive" onClick={()=>count(+1)}>+</button>
                     </div>
                     <div>
-                        <button className='StyleCard-btn'>Agregar al carrito</button>
+                        <button className='StyleCard-btn'>Ver detalle</button>
                     </div>
                 </div>
                 
