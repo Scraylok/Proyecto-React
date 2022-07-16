@@ -9,7 +9,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import React from 'react';
 import CartProvider from './Context/CartContext';
 
-const Cartcontext = React.createContext('')
+export const Cartcontext = React.createContext('');
 
 function App() {
   return (
