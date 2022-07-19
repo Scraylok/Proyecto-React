@@ -34,7 +34,7 @@ const Item = ({products,stock}) =>  {
                     <button className="StyleCard-btn_positive" onClick={()=>count(+1)}>+</button>
                     </div>
                     <div>
-                        <button className='StyleCard-btn'>Ver detalle</button>
+                        <Link to={`/Detail/${Item.id}`} className='StyleCard-btn'>Ver detalle</Link>
                     </div>
                 </div>
                 

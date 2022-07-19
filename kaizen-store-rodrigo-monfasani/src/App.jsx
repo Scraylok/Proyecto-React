@@ -23,9 +23,9 @@ function App() {
             <div className="App"><Landing Greeting="Bienvenido a" /></div><ItemListContainer />  
             </div>
             }/>
-          <Route path='/Category/:categoryId' element={<ItemListContainer/>}/>
+          <Route path='/category/:categoryId' element={<ItemListContainer/>}/>
           <Route path='/Cart' element={ <Cart/> }/>
-          <Route path='/Detail/:id' element={<ItemDetailcontainer/>}/>
+          <Route path='/detail/:id' element={<ItemDetailcontainer/>}/>
         </Routes>
       </CartProvider>
     </BrowserRouter>

@@ -1,4 +1,6 @@
 import React,{useEffect,useState} from 'react'
+import { useParams } from 'react-router-dom';
+import { getProd } from '../../Mocks/fakeApi';
 import  ItemDetail  from '../ItemDetail/ItemDetail'
 
 
@@ -7,15 +9,22 @@ const mug ={id:'01', name:'random1', description: "Lorem ipsum dolor sit amet, c
 
 const ItemDetailcontainer = () => {
     const [data,setData] = useState({});
+    const [loading, setLoading]=useState(true)
+    const {id} = useParams()
 
     useEffect(() => {
-        const getData = new Promise(resolve => {
-            setTimeout(() => {
-                resolve(mug);
-            },3000);
-            getData.then(res => setData(res));
-        })
-    },[])
+      setLoading(true);
+      getProd(id)
+          .then((res) => {
+            setData(res);
+          })
+          .catch((error) => {
+              console.log(error);
+          })
+          .finally(() => {
+              setLoading(false);
+          });
+  }, [id]);
 
   return (
     <ItemDetail data={data}/>

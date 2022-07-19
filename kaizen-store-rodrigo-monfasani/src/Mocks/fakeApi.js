@@ -9,13 +9,25 @@ const products = [
 
 ]
 
-export const getData = new Promise ((resolve, reject) => {
-    let condition = true 
-    setTimeout(() => {
-        if(condition){
-            resolve(products)
-        }else{
-            reject(console.log('algo salio mal'))
-        }
-    },3000)
-})
+export const getProds = (categoryId) => {
+    return new Promise ((resolve, reject) => {
+        const productsFilter = products.filter(
+            (prod) => prod.category === categoryId)
+        setTimeout(() => {
+            categoryId
+            ? resolve(productsFilter)
+            : resolve(products);
+        }, 1000);
+
+    })
+
+};
+
+export const getProd = (id) => {
+    return new Promise((resolve, reject) =>{
+        const productFind = products.find((prod) => prod.id === Number(id));
+        setTimeout(() => {
+            resolve(productFind);
+        },1000);
+    });
+};

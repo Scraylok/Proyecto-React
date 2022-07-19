@@ -3,8 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './StylesItemList.css'
 import { useState, useEffect } from "react";
 import ItemList from '../itemList/ItemList';
+import { useParams } from "react-router-dom";
 
-import { getData } from "../../Mocks/fakeApi";
+import { getProds } from "../../Mocks/fakeApi";
 
 
 
@@ -16,13 +17,22 @@ import { getData } from "../../Mocks/fakeApi";
     const [productsList, setProductsList] =useState([])
     const [loading, setLoading]=useState(true)
 
+    const { categoryId } = useParams();
+   
 
     useEffect(() => {
-        getData
-        .then((result) => setProductsList(result))
-        .catch((error)=>console.log(error))
-        .finally(()=>setLoading(false)) 
-    },[])
+        setLoading(true);
+        getProds(categoryId)
+            .then((res) => {
+                setProductsList(res);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    }, [categoryId]);
     
    
     return (

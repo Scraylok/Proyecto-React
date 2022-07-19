@@ -2,30 +2,37 @@ import React from "react";
 import "./Styles.css";
 import kaizenLogo from "../../Assests/Kaizen.png"
 import CartWidget from "../CartWidget/CartWidget";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const itemsNav =  [
 
     {
         Id:1,
-        label:"Juegos",
-        route:"",
+        path: '/',
+        name:"Home",
+        
     },
     {
         id:2,
-        label:"Monedas",
-        route:"",
+        path: '/category/Monedas',
+        name:"Monedas",
         
     },
     {
         id:3,
-        label:"Skins",
-        route:"",
+        path: '/category/Juegos',
+        name:"Juegos",
+        
     },
     {
         id:4,
-        label:"Merchandising",
-        route:"",
+        path: '/category/Skins',
+        name:"Skins",
+    },
+    {
+        id:5,
+        path: '/category/Merchandising',
+        name:"Merchandising",
     }
 ]
 
@@ -36,10 +43,11 @@ const Navbar = () => {
            
           
         
-
+            
             <div className="nav-items">
-            {itemsNav.map((item)=> (
-                <NavLink  className="nav-item" to={itemsNav} key={item.id} >{item.label}</NavLink>
+
+            {itemsNav.map((catnav)=> (
+                <Link className="nav-item" key={catnav.id}  to={catnav.path}>{catnav.name}</Link>
 
             ))}
             </div>
