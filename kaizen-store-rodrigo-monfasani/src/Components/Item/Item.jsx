@@ -15,26 +15,24 @@ const Item = ({products,stock}) =>  {
         const result = amount + value
         if(result<=stock){
             setAmount(amount+value)
-            
-        }
+        }}
         
-         }
    
         return (
             <section className='StyleCard'>
 
-                <img className='thumbnail' src={img} alt={name} />
+                <img className='thumbnail' src={products.img} alt={name} />
 
                 <div className='StyleCard-body'>
                     <p className='StyleCard-tittle'>{name}</p>
                     <p className='StyleCard-text'>{description}</p>
-                    <div className='d-flex'>
+                    {/* <div className='d-flex'>
                     <button className="StyleCard-btn_negative" disabled={amount <=0} onClick={()=>count(-1)}>-</button>
                     <span className='d-flex flex-row p-1'>{amount} | {stock}</span>
                     <button className="StyleCard-btn_positive" onClick={()=>count(+1)}>+</button>
-                    </div>
+                    </div> */}
                     <div>
-                        <Link to={`/Detail/${Item.id}`} className='StyleCard-btn'>Ver detalle</Link>
+                        <Link to={`/detail/${Item.id}`} className='StyleCard-btn'>Ver detalle</Link>
                     </div>
                 </div>
                 

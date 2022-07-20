@@ -17,6 +17,11 @@ const CartProvider = ({children}) => {
           setCart([...cart, [...Item, quantity]])
         }
     }
+    const totalPrice = () => {
+      return cart.reduce((prev, act) => prev + act.quantity * act.price, 0);
+    }
+
+    const totalProducts = () => cart.reduce((accumulator,currentProduct) => accumulator + currentProduct.quantity, 0);
 
     const clearCart = () => setCart([])
 
@@ -29,7 +34,10 @@ const CartProvider = ({children}) => {
         clearCart,
         isInCart,
         removeProduct,
-        addProduct
+        addProduct,
+        totalPrice,
+        totalProducts,
+        cart
 
     }}>
         {children}
