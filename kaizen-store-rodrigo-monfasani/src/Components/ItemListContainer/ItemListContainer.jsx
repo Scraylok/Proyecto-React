@@ -5,12 +5,13 @@ import { useState, useEffect } from "react";
 import ItemList from '../itemList/ItemList';
 import { useParams } from "react-router-dom";
 
+
 import { getProds } from "../../Mocks/fakeApi";
 
 
 
 
- const ItemListContainer = ({}) => {
+ export const ItemListContainer = ({}) => {
     
 
   

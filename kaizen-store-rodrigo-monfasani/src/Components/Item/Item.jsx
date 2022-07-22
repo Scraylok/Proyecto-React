@@ -8,7 +8,7 @@ import { CartContext } from '../../Context/CartContext';
 const Item = ({products,stock}) =>  {
     const nombre = useContext(CartContext)
 
-    const {img, name, description} = products
+    const {img , name, description} = products
  
     const [amount, setAmount] = useState(0)
     const count = (value) => {
@@ -21,7 +21,7 @@ const Item = ({products,stock}) =>  {
         return (
             <section className='StyleCard'>
 
-                <img className='thumbnail' src={products.img} alt={name} />
+                <img className='thumbnail' src={img} alt={name} />
 
                 <div className='StyleCard-body'>
                     <p className='StyleCard-tittle'>{name}</p>
