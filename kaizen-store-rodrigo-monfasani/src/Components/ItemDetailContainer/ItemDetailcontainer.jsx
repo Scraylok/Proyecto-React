@@ -2,17 +2,24 @@ import React,{useEffect,useState} from 'react'
 import { useParams } from 'react-router-dom';
 import { getProd } from '../../Mocks/fakeApi';
 import  ItemDetail  from '../ItemDetail/ItemDetail'
-
+import { db } from '../../firebase/firebase';
+import {doc, getDocs, collection, getDoc} from "firebase/firestore"
 
 
 
 
 export const ItemDetailcontainer = () => {
-    const [data,setData] = useState({});
+    const [products,setProducts] = useState({});
     const [loading, setLoading]=useState(true);
     const {id} = useParams();
 
     useEffect(() => {
+      const productsCollection = collection(db,'products');
+        const refDoc=doc(productsCollection,id)
+        getDoc(refDoc).then(result => {
+          setProducts(result.products())
+        })
+
       setLoading(true);
       getProd(id)
           .then((res) => {
@@ -27,7 +34,7 @@ export const ItemDetailcontainer = () => {
   }, [id]);
 
   return (
-    <ItemDetail data={data}/>
+    <ItemDetail products={products}/>
   );
 }
 export default ItemDetailcontainer

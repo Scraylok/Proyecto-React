@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import ItemList from '../itemList/ItemList';
 import { useParams } from "react-router-dom";
 import { db } from "../../firebase/firebase";
-import { getDocs, collection, query } from "firebase/firestore";
+import { getDocs, collection, query, where } from "firebase/firestore";
 
 
 import { getProds } from "../../Mocks/fakeApi";
@@ -24,9 +24,10 @@ import { getProds } from "../../Mocks/fakeApi";
    
 
     useEffect(() => {
-
+        
         const productsCollection = collection(db, 'products');
-        getDocs(productsCollection)
+        const q = query(productsCollection, where('category', '==', 'Merchandising'))
+        getDocs(q)
         .then(result =>{
             const list = result.docs.map(product =>{
                 return {
@@ -35,20 +36,21 @@ import { getProds } from "../../Mocks/fakeApi";
                 } 
                     
             })
-            setProducts(list);
+            setProductsList(list);
         })
+        
 
         // setLoading(true);
         // getProds(categoryId)
         //     .then((res) => {
         //         setProductsList(res);
         //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     })
-        //     .finally(() => {
-        //         setLoading(false);
-        //     });
+            .catch((error) => {
+                console.log(error);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     }, [categoryId]);
     
    
