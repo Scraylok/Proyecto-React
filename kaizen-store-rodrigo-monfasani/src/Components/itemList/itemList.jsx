@@ -2,7 +2,7 @@ import React from 'react';
 import Item from '../Item/Item';
 import './StyleItemList.css'
 
-const ItemList = ({productsList}) => {
+const ItemList = ({productsList = []}) => {
     
         return (
             <div className=''>

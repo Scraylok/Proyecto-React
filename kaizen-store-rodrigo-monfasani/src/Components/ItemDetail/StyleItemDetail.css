@@ -10,7 +10,9 @@
     flex-wrap: wrap;
 }
 .detail-image {
-    width: 100%;
+    width: 50%;
+    height: 350px;
+    
 }
 .content {
     width: 100%;

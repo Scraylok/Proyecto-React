@@ -6,8 +6,6 @@ import { ItemCount } from "../itemCount/ItemCount";
 
 export const ItemDetail = ({ products }) => {
   
-  
-
   const [goToCart,setGoToCart] = useState(false)
   const {addProduct} = useCartContext()
 

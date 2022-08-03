@@ -1,11 +1,13 @@
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import React from 'react'
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCartContext } from '../../Context/CartContext'
 import { itemCart } from '../itemCart/itemCart';
 
 const Cart = () => {
-  const { Cart, totalPrice} = useCartContext();
+  const [idPurchase, setIdPurchase] = useState("")
+  // const { Cart, totalPrice} = useCartContext();
   const order = {
     buyer : {
       name: 'juan',

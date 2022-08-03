@@ -8,7 +8,6 @@ import { db } from "../../firebase/firebase";
 import { getDocs, collection, query, where } from "firebase/firestore";
 
 
-import { getProds } from "../../Mocks/fakeApi";
 
 
 
@@ -25,32 +24,23 @@ import { getProds } from "../../Mocks/fakeApi";
 
     useEffect(() => {
         
-        const productsCollection = collection(db, 'products');
-        const q = query(productsCollection, where('category', '==', 'Merchandising'))
-        getDocs(q)
-        .then(result =>{
-            const list = result.docs.map(product =>{
+        const q = categoryId
+        ? query(collection(db, 'products'), where('category', '==', categoryId))
+        : collection(db, 'products');
+        
+    getDocs(q)
+        .then(result => {
+            const list = result.docs.map(doc => {
                 return {
-                    id: product.id,
-                    ...product.data(),
-                } 
-                    
+                    id: doc.id,
+                    ...doc.data(),
+                }
             })
             setProductsList(list);
         })
-        
+        .catch(err => console.log(err))
+        .finally(() => setLoading(false))
 
-        // setLoading(true);
-        // getProds(categoryId)
-        //     .then((res) => {
-        //         setProductsList(res);
-        //     })
-            .catch((error) => {
-                console.log(error);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
     }, [categoryId]);
     
    

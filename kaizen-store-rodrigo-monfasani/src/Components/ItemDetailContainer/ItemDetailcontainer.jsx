@@ -1,3 +1,4 @@
+
 import React,{useEffect,useState} from 'react'
 import { useParams } from 'react-router-dom';
 import { getProd } from '../../Mocks/fakeApi';
@@ -14,23 +15,16 @@ export const ItemDetailcontainer = () => {
     const {id} = useParams();
 
     useEffect(() => {
-      const productsCollection = collection(db,'products');
-        const refDoc=doc(productsCollection,id)
-        getDoc(refDoc).then(result => {
-          setProducts(result.products())
-        })
-
-      setLoading(true);
-      getProd(id)
-          .then((res) => {
-            setData(res);
+      const productsCollection = collection(db, 'products');
+      const refDoc = doc(productsCollection, id)
+      getDoc(refDoc).then(result => {
+          setProducts({
+              id: result.id,
+              ...result.data(),
           })
-          .catch((error) => {
-              console.log(error);
-          })
-          .finally(() => {
-              setLoading(false);
-          });
+      })
+      .catch(err => console.log(err))
+      .finally(() => setLoading(false))
   }, [id]);
 
   return (
