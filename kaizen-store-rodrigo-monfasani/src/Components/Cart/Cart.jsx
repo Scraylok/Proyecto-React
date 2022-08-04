@@ -6,8 +6,8 @@ import { useCartContext } from '../../Context/CartContext'
 import { itemCart } from '../itemCart/itemCart';
 
 const Cart = () => {
-  const [idPurchase, setIdPurchase] = useState("")
-  // const { Cart, totalPrice} = useCartContext();
+  // const [idPurchase, setIdPurchase] = useState("")
+  const { cart, totalPrice} = useCartContext();
   const order = {
     buyer : {
       name: 'juan',
@@ -15,9 +15,10 @@ const Cart = () => {
       phone: '1231231',
       address: 'calle falsa'
     },
-    items: Cart.map(products => ({ id: products.id, title: products.title, price: products.price, quantity: products.quantity,})),
+    items: cart.map(products => ({ id: products.id, title: products.title, price: products.price, quantity: products.quantity})),
     total: totalPrice(),
   }
+  
   const handleClick = () => {
     const db = getFirestore();
     const ordersCollection = collection(db,'orders');
@@ -25,7 +26,7 @@ const Cart = () => {
     .then(({id}) =>console.log(id))
   }
 
-  if (Cart.lenght === 0){
+  if (cart.lenght === 0){
     return (
       <>
       <p>No hay elementos en el carrito</p>
@@ -37,7 +38,7 @@ const Cart = () => {
   return (
     <>
       {
-        Cart.map(products => <itemCart key={products.id} products={products}/>)
+        cart.map(products => <itemCart key={products.id} products={products}/>)
       }
       <p>Total: {totalPrice()}</p>
       <button onClick={handleClick}>Comprar</button>

@@ -6,12 +6,12 @@ import { ItemCount } from "../itemCount/ItemCount";
 
 export const ItemDetail = ({ products }) => {
   
-  const [goToCart,setGoToCart] = useState(false)
-  const {addProduct} = useCartContext()
+  const [goToCart,setGoToCart] = useState(false);
+  const {addProduct} = useCartContext();
 
   const onAdd = (quantity) => {
     setGoToCart(true);
-    addProduct({...products, qty:quantity})
+    addProduct({products,quantity})
   }
 
   return (
