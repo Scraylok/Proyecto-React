@@ -33,7 +33,9 @@ const itemsNav =  [
         id:5,
         path: '/category/Merchandising',
         name:"Merchandising",
-    }
+    },
+
+
 ]
 
 const Navbar = () => {
@@ -51,7 +53,8 @@ const Navbar = () => {
 
             ))}
             </div>
-            <CartWidget/>
+            <Link className="nav-item" to='Cart'> <CartWidget/> </Link>
+            
         </div>
 
     )

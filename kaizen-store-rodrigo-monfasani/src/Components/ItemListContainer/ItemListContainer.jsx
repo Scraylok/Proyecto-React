@@ -8,14 +8,8 @@ import { db } from "../../firebase/firebase";
 import { getDocs, collection, query, where } from "firebase/firestore";
 
 
-
-
-
-
- export const ItemListContainer = ({}) => {
+export const ItemListContainer = ({}) => {
     
-
-  
     const [productsList, setProductsList] =useState([]);
     const [loading, setLoading]=useState(true);
 

@@ -1,6 +1,7 @@
 .container {
     width: 95%;
-    margin: auto;
+    margin: 4rem;
+    margin-top: 8.5rem;
 }
 .detail {
     margin-top: 3rem;

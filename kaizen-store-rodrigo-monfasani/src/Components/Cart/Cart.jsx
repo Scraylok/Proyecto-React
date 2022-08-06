@@ -1,9 +1,10 @@
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import React from 'react'
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCartContext } from '../../Context/CartContext'
-import { itemCart } from '../itemCart/itemCart';
+import { ItemCart } from '../itemCart/itemCart';
+import '../Cart/Cart.css';
+
 
 const Cart = () => {
   // const [idPurchase, setIdPurchase] = useState("")
@@ -15,7 +16,7 @@ const Cart = () => {
       phone: '1231231',
       address: 'calle falsa'
     },
-    items: cart.map(products => ({ id: products.id, title: products.title, price: products.price, quantity: products.quantity})),
+    items: cart.map(product => ({ id: product.id, title: product.title, price: product.price, quantity: product.quantity})),
     total: totalPrice(),
   }
   
@@ -30,18 +31,21 @@ const Cart = () => {
     return (
       <>
       <p>No hay elementos en el carrito</p>
-      <Link to='/'>Comprar</Link>
+      <Link to='/'>Hacer compras</Link>
       </>
     );
 
   }
   return (
     <>
+    <div className='cart_container'>
+
       {
-        cart.map(products => <itemCart key={products.id} products={products}/>)
+        cart.map(product => <ItemCart key={product.id} product={product}/>)
       }
       <p>Total: {totalPrice()}</p>
       <button onClick={handleClick}>Comprar</button>
+    </div>
     </>
   )
 }

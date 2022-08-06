@@ -3,9 +3,10 @@
     background-color: rgba(79, 79, 82, 0.399);
     display: flex;
     width: 25rem;
-    height: 40rem;
+    height: 30rem;
     margin: 1rem;
     border-radius: 15px;
+    margin-top: 5rem;
 }
 
 .thumbnail {
