@@ -1,52 +1,50 @@
-import { addDoc, collection, getFirestore } from 'firebase/firestore';
-import React from 'react'
-import { Link } from 'react-router-dom';
-import { useCartContext } from '../../Context/CartContext'
-import { ItemCart } from '../itemCart/itemCart';
-import '../Cart/Cart.css';
-
+import React from "react";
+import "./Cart.css"
+import { Link, useNavigate } from "react-router-dom"
+import { useCartContext } from "../../Context/CartContext";
 
 const Cart = () => {
-  // const [idPurchase, setIdPurchase] = useState("")
-  const { cart, totalPrice} = useCartContext();
-  const order = {
-    buyer : {
-      name: 'juan',
-      email: 'juansito@gmail.com',
-      phone: '1231231',
-      address: 'calle falsa'
-    },
-    items: cart.map(product => ({ id: product.id, title: product.title, price: product.price, quantity: product.quantity})),
-    total: totalPrice(),
-  }
-  
-  const handleClick = () => {
-    const db = getFirestore();
-    const ordersCollection = collection(db,'orders');
-    addDoc[ordersCollection,order]
-    .then(({id}) =>console.log(id))
-  }
+    const { products, clearCart, totalPrice, removeProduct } = useCartContext();
+    const navegar = useNavigate()
 
-  if (cart.lenght === 0){
+    if (products.length === 0 ){
+      return (
+
+      <div className="cart_empty">
+          <h2>No hay elementos en el carrito, haz click <Link to={"/"}>AQUI</Link> para ir a comprar</h2>
+          
+        </div>
+      )
+    }
     return (
-      <>
-      <p>No hay elementos en el carrito</p>
-      <Link to='/'>Hacer compras</Link>
-      </>
+        <>
+        {
+            
+          <div>
+            <h1 className="cart_tittle">Tu Carrito</h1>
+            <div>
+                {products.map((prod) => (
+                    <div className="cart_div" key={prod.id}>
+                        <img className="imgCart" src={prod.img} alt="Carrito" />
+                        <h3>Producto: {prod.name}</h3>
+                        <h3>${prod.price}</h3>
+                        <h4>Cantidad: {prod.quantity}</h4>
+                        <button className='btn_remove' onClick={() => removeProduct(product.id)}>Eliminar</button>
+                    </div>
+                ))}
+            </div>
+            <div className="total">
+                <h2 className="carritoh2">Total: ${totalPrice()}</h2>
+                <button  className="btn_cart" onClick={()=> navegar('/checkout')}>Finalizar Compra</button>
+                <button className="btn_catemp" onClick={clearCart}>Vaciar Carrito</button>
+            </div>
+            
+        </div>
+        }
+        </>
+       
     );
+};
 
-  }
-  return (
-    <>
-    <div className='cart_container'>
+export default Cart;
 
-      {
-        cart.map(product => <ItemCart key={product.id} product={product}/>)
-      }
-      <p>Total: {totalPrice()}</p>
-      <button onClick={handleClick}>Comprar</button>
-    </div>
-    </>
-  )
-}
-export default Cart

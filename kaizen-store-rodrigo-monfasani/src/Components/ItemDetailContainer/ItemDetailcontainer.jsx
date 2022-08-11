@@ -1,10 +1,9 @@
 
 import React,{useEffect,useState} from 'react'
 import { useParams } from 'react-router-dom';
-import { getProd } from '../../Mocks/fakeApi';
 import  ItemDetail  from '../ItemDetail/ItemDetail'
 import { db } from '../../firebase/firebase';
-import {doc, getDocs, collection, getDoc} from "firebase/firestore"
+import {doc, collection, getDoc} from "firebase/firestore"
 
 
 

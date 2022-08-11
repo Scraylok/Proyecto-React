@@ -5,36 +5,28 @@ import {  useCartContext } from '../../Context/CartContext';
 
 
 
-const Item = ({ product, stock }) =>  {
+const Item = ({ product }) =>  {
     
-    const nombre = useContext(useCartContext)
+    const {products} = useCartContext();
     
-    const [amount, setAmount] = useState(0)
-    const count = (value) => {
-        const result = amount + value
-        if(result<=stock){
-            setAmount(amount+value)
-        }}
+    const isInCart = products.some((prod)=> prod.id === product.id)    
         
+    const { name, price, img, description, category} = product
    
         return (
             <section className='StyleCard'>
 
-                <img className='thumbnail' src={product.img} alt={product.name} />
+                <img className='thumbnail' src={img} alt={name} />
 
                 <div className='StyleCard-body'>
-                    <p className='StyleCard-tittle'>{product.name}</p>
-                    <p className='StyleCard-text'>{product.description}</p>
-                    {/* <div className='d-flex'>
-                    <button className="StyleCard-btn_negative" disabled={amount <=0} onClick={()=>count(-1)}>-</button>
-                    <span className='d-flex flex-row p-1'>{amount} | {stock}</span>
-                    <button className="StyleCard-btn_positive" onClick={()=>count(+1)}>+</button>
-                    </div> */}
-                    <div>
+                    <h1 className='StyleCard-tittle'>{name}</h1>
+                    <p className='StyleCard-cat'>{category}</p>
+                    <p className='StyleCard-text'>{description}</p><div>
+                    <h3><span>${price}</span></h3>
                         <Link to={`/detail/${product.id}`} className='StyleCard-btn'>Ver detalle</Link>
                     </div>
                 </div>
-                
+                {isInCart && <h2>Ya esta en el Carrito</h2>}
             </section>
         );
    

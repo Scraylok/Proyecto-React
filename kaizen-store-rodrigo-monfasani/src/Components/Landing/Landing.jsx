@@ -2,7 +2,7 @@ import React from "react";
 import "../Landing/StyleLanding.css";
 import KaizenLogo from "../../Assests/Kaizen.png"
 
-const  ItemListContainer = ({Greeting, Logo}) => {
+const  ItemListContainer = ({Greeting}) => {
     return (
     <div className="landing">
         

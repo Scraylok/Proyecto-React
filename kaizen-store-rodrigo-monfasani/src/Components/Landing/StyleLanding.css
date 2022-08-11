@@ -1,10 +1,12 @@
 .landing {
-    padding: 10rem;
+    padding: 1rem;
     width: 100%;
     height: calc(100vh - 60px);
-    display: inline-table;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .Tittle-landing {
@@ -12,16 +14,16 @@
    font-weight: 700;
    
 }
-.Logo-landing {
+.Logo-landing { 
     padding: 2rem;
     width: 400px;
     height: 300px;
-
-    
 }
+
 .Tittle-landing-animation{
     animation: color-change 2.5s infinite;
   }
+
   
   @keyframes color-change {
     0% { color: darkorange; }

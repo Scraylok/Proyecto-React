@@ -18,3 +18,14 @@
 .content {
     width: 100%;
 }
+.purchase_options{
+    color: orangered;
+    font-size: x-large;
+    font-weight: 700;
+    text-decoration: none;
+    margin: 5rem;
+}
+.container_purchase-options {
+    display: flex;
+    flex-wrap: wrap;
+}

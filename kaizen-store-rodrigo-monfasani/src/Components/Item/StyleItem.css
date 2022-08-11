@@ -13,6 +13,7 @@
     background-color: bisque;
     border-radius: 10px;
     height: 150px;
+    width: 200px;
     margin-bottom: 15px;
     background-size: cover;
 }
@@ -36,22 +37,25 @@
 }
 
 .StyleCard-btn {
+    text-decoration: none;
+    font-size: x-large;
+    font-weight: 700;
+    color: rgba(255, 0, 0, 0.703);
     width: 7.5rem;
     border-radius: 10px;
     padding: 0.1rem;
     margin: 0.1rem;
 }
-.StyleCard-btn_negative {
-    width: 2.5rem;
-    height: fit-content;
-    background-color: rgba(255, 0, 0, 0.703);
-    border-radius: 5px;
-    margin: 0.1rem;
+
+.StyleCard-btn:hover {
+
+  color: rgb(7, 155, 130);
+    
 }
-.StyleCard-btn_positive {
-    width: 2.5rem;
-    height: fit-content;
-    background-color: rgba(14, 170, 11, 0.612);
-    border-radius: 5px;
-    margin: 0.1rem;
+.StyleCard-cat{
+    margin: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: larger;
+    color: white;
 }

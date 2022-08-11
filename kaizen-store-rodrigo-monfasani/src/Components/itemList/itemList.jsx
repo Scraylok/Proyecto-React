@@ -8,7 +8,7 @@ const ItemList = ({ productsList = [] }) => {
             <div className=''>
                  <h3>Lista de productos</h3>
                  <div className='card-container'>
-                     {productsList.map(products => <Item key={products.id} product={products}/>)}
+                     {productsList.map(product => <Item key={product.id} product={product}/>)}
                  </div>
             </div>
         );

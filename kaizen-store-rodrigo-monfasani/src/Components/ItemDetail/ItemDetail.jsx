@@ -6,13 +6,13 @@ import { ItemCount } from "../itemCount/ItemCount";
 
 export const ItemDetail = ({ products }) => {
   
-  const [goToCart,setGoToCart] = useState(false);
+  const [goToCart,setGoToCart] = useState(0);
   const {addProduct} = useCartContext();
 
   const onAdd = (quantity) => {
-    setGoToCart(true);
-    addProduct({products,quantity})
-  }
+    setGoToCart(quantity);
+    addProduct({products,quantity});
+  };
 
   return (
     <div className='container'>
@@ -24,10 +24,16 @@ export const ItemDetail = ({ products }) => {
                 <h3>$ {products.price}</h3>
                 <h4>Stock :{products.stock}</h4>
                 {
-                  goToCart
-                  ? <Link to="/Cart">Finalizar compra</Link>
-                  :<ItemCount initial={1} stock={products.stock} onAdd={onAdd}/>
+                  goToCart === 0 ? (
+                    <ItemCount initial={1} 
+                    stock={products.stock} 
+                    onAdd={onAdd}/>
+                  ):<div className='container_purchase-options'>
+                  <Link className='purchase_options' to="/Cart">Finalizar compra</Link>
+                <Link className='purchase_options'  to="/">Hacer mas compras</Link>
+                </div>
                 }
+                
             </div>
         </div>
     </div>
