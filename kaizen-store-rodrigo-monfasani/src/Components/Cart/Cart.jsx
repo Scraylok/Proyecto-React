@@ -29,12 +29,12 @@ const Cart = () => {
                         <h3>Producto: {prod.name}</h3>
                         <h3>${prod.price}</h3>
                         <h4>Cantidad: {prod.quantity}</h4>
-                        <button className='btn_remove' onClick={() => removeProduct(product.id)}>Eliminar</button>
+                        <button className='btn_remove' onClick={() => removeProduct(prod.id)}>Eliminar</button>
                     </div>
                 ))}
             </div>
             <div className="total">
-                <h2 className="carritoh2">Total: ${totalPrice()}</h2>
+                <h2>Total: ${totalPrice()}</h2>
                 <button  className="btn_cart" onClick={()=> navegar('/checkout')}>Finalizar Compra</button>
                 <button className="btn_catemp" onClick={clearCart}>Vaciar Carrito</button>
             </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './StylesItemList.css'
+import './StylesItemList.css';
 import { useState, useEffect } from "react";
 import ItemList from '../itemList/ItemList';
 import { useParams } from "react-router-dom";
